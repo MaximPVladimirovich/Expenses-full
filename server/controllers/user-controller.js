@@ -51,7 +51,7 @@ const read = async (req, res) => {
   return res.json((req.profile))
 }
 
-const update = async (req, res, next) => {
+const update = async (req, res) => {
   try {
     let user = req.profile
     user = extend(user, req.body)
@@ -66,7 +66,19 @@ const update = async (req, res, next) => {
     })
   }
 }
-const remove = async (req, res, next) => {
+
+const remove = async (req, res) => {
+  try {
+    let user = req.profile
+    let deletedUser = await user.remove()
+    deletedUser.hashed_password = underfined
+    deletedUser.salt = undefined
+    res.json(deletedUser)
+  } catch (error) {
+    return res.status(400).json({
+      error: errorHandler.getErrorMessage(error)
+    })
+  }
 }
 
 export default { create, userById, read, list, remove, update }
