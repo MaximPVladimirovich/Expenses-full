@@ -5,6 +5,7 @@ const router = express.Router()
 
 router.route(`/api/users`)
   .get(userController.list)
+  // This route will call the userController function create
   .post(userController.create)
 
 
