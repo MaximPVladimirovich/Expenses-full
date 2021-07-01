@@ -8,17 +8,17 @@ const config = {
   mode: "development",
   // Specifies how source maps are generated.
   // Source maps are a way of mapping code from a compressed file.
-  devtool: `eval-source-map`,
+  devtool: 'eval-source-map',
   // Specifies where webpack starts bundling code.
   entry: [
-    `webpack-hot-middleware/client?reload=true`, path.join(CURRENT_WORKING_DIR, `client/main.js`)
+    'webpack-hot-middleware/client?reload=true', path.join(CURRENT_WORKING_DIR, 'client/main.js')
   ],
   // The output path for the bundled code
   output: {
-    path: path.join(CURRENT_WORKING_DIR, `/dist`),
-    filename: `bundle.js`,
+    path: path.join(CURRENT_WORKING_DIR, '/dist'),
+    filename: 'bundle.js',
     // All public assest in app
-    publicPath: `/dist/`
+    publicPath: '/dist/'
   },
   // Sets regex rule for which file is used in transpilation. 
   module: {
@@ -27,7 +27,7 @@ const config = {
         test: /\jsx?$/,
         exclude: /node_modules/,
         // This is the transpilation tool
-        use: [`babel-loader`]
+        use: ['babel-loader']
       }
     ]
   },

@@ -33,4 +33,24 @@ UserSchema.virtual('password').set(function (password) {
   return this._password
 })
 
+UserSchema.methods = {
+  // This method checks for sign in attempts and verifies user
+  authenticate: function (plainText) {
+    return this.encryptPassword(plainText) === this.hashed_password
+  },
+  // Encrypts password from user input string
+  encryptPassword: function (password) {
+    if (!password) return ''
+    try {
+      return crypto.createHmac(`sha1`, this.salt).update(password).digest('hex')
+    } catch (error) {
+      return ''
+    }
+  },
+  // Create a unique salt from current timestamp and math.random
+  makeSalt: function () {
+    return Math.round((new Date().valueOf() * Math.random())) + ''
+  }
+}
+
 export default Mongoose.model('User', UserSchema)
