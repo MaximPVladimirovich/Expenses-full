@@ -1,9 +1,20 @@
 import User from "../models/user-model"
-import lodash from 'lodash/extend'
-import errorHandler from './error-controller'
+import extend from 'lodash/extend'
+import errorHandler from '../helpers/dbErrorHandle'
 
 
-const create = async (req, res, next) => {
+const list = async (req, res) => {
+  try {
+    let users = await User.find().select('name email updated created')
+    res.json(users)
+  } catch (error) {
+    return res.status(400).json({
+      error: errorHandler.getErrorMessage(error)
+    })
+  }
+}
+
+const create = async (req, res) => {
   const user = new User(req.body)
   try {
     await user.save()
@@ -12,18 +23,7 @@ const create = async (req, res, next) => {
     })
   } catch (error) {
     return res.status(400).json({
-      error: errorHandle.getErrorMessage(error)
-    })
-  }
-}
-
-const list = async (req, res) => {
-  try {
-    let users = await User.find().select('name email updated created')
-    res.json(users)
-  } catch (error) {
-    return res.status(400).json({
-      error: errorHandle.getErrorMessage(error)
+      error: errorHandler.getErrorMessage(error)
     })
   }
 }
@@ -31,19 +31,19 @@ const list = async (req, res) => {
 // find user by id
 const userById = async (req, res, next, id) => {
   try {
-    let user = User.findById(id)
+    let user = await User.findById(id)
     if (!user)
       return res.status('400').json({
-        error: 'User not found'
+        error: "User not found"
       })
     req.profile = user
+    next()
   } catch (error) {
     return res.status('400').json({
       error: "Could not retrieve user"
     })
   }
 }
-
 
 const read = async (req, res) => {
   req.profile.hashed_password = undefined
@@ -62,7 +62,7 @@ const update = async (req, res) => {
     res.json(user)
   } catch (error) {
     return res.status(400).json({
-      error: errorHandle.getErrorMessage(error)
+      error: errorHandler.getErrorMessage(error)
     })
   }
 }

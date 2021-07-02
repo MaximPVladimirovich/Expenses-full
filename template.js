@@ -8,7 +8,7 @@ export default () => {
      <title>MErN Kickstart</title>
     </head>
     <body>
-     <div id="root">Hellow Worldsss</div>
+     <div id="root">Hellow World</div>
      <script type="text/javascript" src="/dist/bundle.js"></script>
     </body>
    </html>`

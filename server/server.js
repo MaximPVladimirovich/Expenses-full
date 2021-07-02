@@ -1,10 +1,10 @@
-import path from 'path'
 require('dotenv').config()
 const express = require('express')
-import devBundle from './devBundle'
-const app = express()
-import template from './../template'
 const mongoose = require('mongoose')
+import app from "./express"
+import path from 'path'
+import devBundle from './devBundle'
+import template from './../template'
 devBundle.compile(app)
 
 
@@ -27,7 +27,6 @@ database.on(`error`, console.error.bind(console, `connection error`));
 database.once(`open`, function () {
   console.log(`connected to db`)
 })
-
 
 
 app.get('/', function (req, res) {

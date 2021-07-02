@@ -1,8 +1,9 @@
-import { Mongoose } from "mongoose";
+const mongoose = require(`mongoose`)
 
-const UserSchema = new Mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   name: {
     type: String,
+    // Removes spaces on start and end of string
     trim: true,
     required: 'Name is required'
   },
@@ -15,7 +16,6 @@ const UserSchema = new Mongoose.Schema({
   },
   hashed_password: {
     type: String,
-    require: "Password is required"
   },
   created: {
     type: Date,
@@ -28,7 +28,7 @@ const UserSchema = new Mongoose.Schema({
 UserSchema.virtual('password').set(function (password) {
   this._password = password
   this.salt = this.makeSalt()
-  this.hashed_password = this.encryptPasswor(password)
+  this.hashed_password = this.encryptPassword(password)
 }).get(function () {
   return this._password
 })
@@ -61,4 +61,4 @@ UserSchema.path('hashed_password').validate(function (v) {
   }
 }, null)
 
-export default Mongoose.model('User', UserSchema)
+export default mongoose.model('User', UserSchema)
