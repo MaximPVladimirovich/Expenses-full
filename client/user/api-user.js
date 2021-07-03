@@ -41,3 +41,40 @@ const read = async (params, credentials, signal) => {
   }
 }
 
+// Update user request. Must pass credentials
+const update = async (params, credentials, user) => {
+  try {
+    let response = await fetch('/api/users/' + params.userId, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + credentials.t
+      },
+      body: JSON.stringify(user)
+    })
+    return await response.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// Delete user method
+const remove = async (params, credentials) => {
+  try {
+    let response = await fetch('/api/users/' + params.userId, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + credentials.t
+      }
+    })
+    return await response.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export { create, list, read, update, remove }
+
