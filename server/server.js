@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 import app from "./express"
 import path from 'path'
 import devBundle from './devBundle'
-import template from './../template'
+import template from '../template'
 devBundle.compile(app)
 
 

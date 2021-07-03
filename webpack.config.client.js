@@ -28,6 +28,10 @@ const config = {
         exclude: /node_modules/,
         // This is the transpilation tool
         use: ['babel-loader']
+      },
+      {
+        test: /\.(ttf|eot|svg|gif|jpg|png)(\?[\s\S]+)?$/,
+        use: 'file-loader'
       }
     ]
   },
