@@ -13,6 +13,7 @@ app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR,
   'dists')))
 
 // Mongoose connection
+mongoose.Promise = global.Promise
 let DB_url = process.env.MONGODB_URI;
 let database = mongoose.connection;
 mongoose.connect(DB_url, {

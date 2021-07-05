@@ -11,20 +11,21 @@ const signin = async (user) => {
       body: JSON.stringify(user)
     })
     return await response.json()
-  } catch (error) {
-    console.log(error)
+  } catch (err) {
+    console.log(err)
   }
 }
 
-// Signout 
 const signout = async () => {
   try {
     let response = await fetch('/auth/signout/', { method: 'GET' })
     return await response.json()
-  } catch (error) {
-    console.log(error)
+  } catch (err) {
+    console.log(err)
   }
 }
 
-export { signin, signout }
-
+export {
+  signin,
+  signout
+}
