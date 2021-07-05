@@ -8,6 +8,7 @@ import helmet from 'helmet'
 import Template from './../template'
 import userRoutes from './routes/user-routes'
 import authRoutes from './routes/auth-routes'
+import expenseRoutes from './routes/expense-routes'
 
 // modules for server side rendering
 import React from 'react'
@@ -25,7 +26,7 @@ import devBundle from './devBundle'
 const CURRENT_WORKING_DIR = process.cwd()
 const app = express()
 
-//comment out before building for production
+//comment when ready for production
 devBundle.compile(app)
 
 // parse body params and attache them to req.body
@@ -40,9 +41,10 @@ app.use(cors())
 
 app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 
-// mount routes
+// Routes
 app.use('/', userRoutes)
 app.use('/', authRoutes)
+app.use('/', expenseRoutes)
 
 app.get('*', (req, res) => {
   const sheets = new ServerStyleSheets()
