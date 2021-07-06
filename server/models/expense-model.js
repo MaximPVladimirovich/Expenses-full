@@ -14,7 +14,6 @@ const ExpenseSchema = new mongoose.Schema({
   catagory: {
     type: String,
     trim: true,
-    required: 'Catagory is required'
   },
   incurred_on: {
     type: Date,

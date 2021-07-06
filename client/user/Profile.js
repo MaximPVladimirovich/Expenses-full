@@ -46,7 +46,7 @@ export default function Profile({ match }) {
       if (data && data.error) {
         setRedirectToSignin(true)
       } else {
-        setUser(data)
+        setUser(data) 
       }
     })
 
