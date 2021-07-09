@@ -55,10 +55,10 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
+   
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
+   
   </ol>
 </details>
 
@@ -306,7 +306,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 James Maxim Bleeker - maxim.bleeker@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/MaximPVladimirovich/Expenses-full)
+Project Link: [https://github.com/MaximPVladimirovich/Expenses-full/issues](https://github.com/MaximPVladimirovich/Expenses-full)
 
 
 
