@@ -8,18 +8,18 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       light: '#5c67a3',
-      main: '#3f4771',
+      main: '#0E1428',
       dark: '#2e355b',
       contrastText: '#fff',
     },
     secondary: {
       light: '#ff79b0',
-      main: '#ff4081',
+      main: '#47D78C',
       dark: '#c60055',
       contrastText: '#000',
     },
-    openTitle: '#3f4771',
-    protectedTitle: pink['400'],
+    openTitle: '#2E4052',
+    protectedTitle: '#0E1428',
     type: 'light'
   }
 })

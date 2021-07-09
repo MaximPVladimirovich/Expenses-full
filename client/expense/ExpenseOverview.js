@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: '4em',
     margin: 20,
     marginBottom: 30,
-    backgroundColor: '#01579b',
+    backgroundColor: '#0E1428',
     color: '#70f0ae',
     textAlign: 'center',
     borderRadius: '50%',
