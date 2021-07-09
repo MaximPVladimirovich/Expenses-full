@@ -66,18 +66,17 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-
-
-The goal of this app is to provide a simple way for anyone to keep track of their expenses. You can add expenses and view an edit basic information about your current spending habits. 
+The goal of this app is to provide a simple way for anyone to keep track of their expenses. You can create expenses and edit basic information about your current spending habits. 
 
 
 A list of used resources that I found helpful are listed in the acknowledgements.
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+
 * [Webpack](https://webpack.js.org/)
 * [Node.js](https://nodejs.org/en/)
 * [React](https://reactjs.org/)
@@ -93,25 +92,48 @@ If you would like to use this project feel free to download or follow the instru
 * npm
   ```sh
   npm install npm@latest -g
-* npm
-  ```sh
-  npm install npm@latest -g
+* Install Node.js
+
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/MaximPVladimirovich/Expenses-full.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+4. Enter your ENV variables in `.env`
    ```JS
-   const API_KEY = 'ENTER YOUR API';
+   const MONGODB_URI = 'ENTER YOUR URL';
+   const JWT_SECRET = 'ENTER STRING'
    ```
+
+### Deploying
+Configure for development and production
+Configure Babel.js
+```
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel"
+  ]
+}
+```
+
 
 
 
