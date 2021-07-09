@@ -55,7 +55,6 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-   
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
    
@@ -80,6 +79,9 @@ A list of used resources that I found helpful are listed in the acknowledgements
 * [Webpack](https://webpack.js.org/)
 * [Node.js](https://nodejs.org/en/)
 * [React](https://reactjs.org/)
+* [MongoDB](https://www.mongodb.com/)
+* [Mongoose](https://mongoosejs.com/)
+* Express - Built in Node.js framwork
 
 
 
