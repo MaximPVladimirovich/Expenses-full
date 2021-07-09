@@ -113,8 +113,9 @@ If you would like to use this project feel free to download or follow the instru
    ```
 
 ## Deploying
+Webpack bundles all your code into a dynamic folder for easy deployement.</p>
 Configure for development and production<br/>
-1. Configure Babel.js
+1. Configure .babelrc
 ```
 {
   "presets": [
@@ -133,16 +134,151 @@ Configure for development and production<br/>
   ]
 }
 ```
+2. Configure webpack<br/>
+- webpack.config.client.js
+```
+const path = require('path')
+const webpack = require('webpack')
+const CURRENT_WORKING_DIR = process.cwd()
+
+const config = {
+  name: "browser",
+  // Sets process.env.NODE.ENV to value. Defaults to production.
+  mode: "development",
+  // Specifies how source maps are generated.
+  // Source maps are a way of mapping code from a compressed file.
+  devtool: 'eval-source-map',
+  // Specifies where webpack starts bundling code.
+  entry: [
+    'webpack-hot-middleware/client?reload=true', path.join(CURRENT_WORKING_DIR, 'client/main.js')
+  ],
+  // The output path for the bundled code
+  output: {
+    path: path.join(CURRENT_WORKING_DIR, '/dist'),
+    filename: 'bundle.js',
+    // All public assest in app
+    publicPath: '/dist/'
+  },
+  // Sets regex rule for which file is used in transpilation. 
+  module: {
+    rules: [
+      {
+        test: /\jsx?$/,
+        exclude: /node_modules/,
+        // This is the transpilation tool
+        use: ['babel-loader']
+      },
+      {
+        test: /\.(ttf|eot|svg|gif|jpg|png)(\?[\s\S]+)?$/,
+        use: 'file-loader'
+      }
+    ]
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  ],
+  resolve: {
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
+  }
+}
+
+module.exports = config
+```
+- webpack.config.client.production.js 
+```
+const path = require('path')
+const CURRENT_WORKING_DIR = process.cwd()
+
+const config = {
+  mode: "production",
+  entry: [
+    path.join(CURRENT_WORKING_DIR, 'client/main.js')
+  ],
+  output: {
+    path: path.join(CURRENT_WORKING_DIR, '/dist'),
+    filename: 'bundle.js',
+    publicPath: "/dist/"
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: [
+          'babel-loader'
+        ]
+      },
+      {
+        test: /\.(ttf|eot|svg|gif|jpg|png)(\?[\s\S]+)?$/,
+        use: 'file-loader'
+      }
+    ]
+  }
+}
+
+module.exports = config
+```
+- webpack.config.server.js 
+```
+const path = require('path')
+const CURRENT_WORKING_DIR = process.cwd()
+const nodeExternals = require('webpack-node-externals')
+
+const config = {
+  name: "server",
+  entry: [path.join(CURRENT_WORKING_DIR, './server/server.js')],
+  target: "node",
+  output: {
+    path: path.join(CURRENT_WORKING_DIR, '/dist/'),
+    filename: "server.generated.js",
+    publicPath: '/dist/',
+    libraryTarget: 'commonjs2'
+  },
+  externals: [nodeExternals()],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          'babel-loader'
+        ]
+      },
+      {
+        test: /\.(ttf|eot|svg|gif|jpg|png)(\?[\s\S]+)?$/,
+        use: 'file-loader'
+      }
+    ]
+  }
+}
+module.exports = config
+```
+3. Add scripts to package.json
+```"scripts": {
+    "development": "nodemon",
+    "build": "webpack --config webpack.config.client.production.js && webpack --mode=production --config webpack.config.server.js",
+    "start": "NODE_ENV=production node ./dist/server.generated.js"
+  }
+  ```
+  4.Run npm script
+   ```sh
+   npm run build
+   ```
+   
+   5. From here you can continue creating a heroku app like normal and you should be good to go. remember env variables. 
 
 
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+[usage-screenshot]
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+
 
 
 
@@ -202,6 +338,7 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[usage-screenshot1]: client/assets/images/addexpense.png
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
