@@ -275,7 +275,7 @@ module.exports = config
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-[usage-screenshot]
+[usage-screenshot1]: client/assets/images/addexpense.png
 
 
 
