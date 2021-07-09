@@ -26,7 +26,7 @@
     <a href="https://github.com/MaximPVladimirovich/Expenses-full"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://ancient-cove-27847.herokuapp.com/">View Demo</a>
     ·
     <a href="https://github.com/MaximPVladimirovich/Expenses-full/issues">Report Bug</a>
     ·
