@@ -112,9 +112,9 @@ If you would like to use this project feel free to download or follow the instru
    const JWT_SECRET = 'ENTER STRING'
    ```
 
-### Deploying
-Configure for development and production
-Configure Babel.js
+## Deploying
+Configure for development and production<br/>
+1. Configure Babel.js
 ```
 {
   "presets": [
