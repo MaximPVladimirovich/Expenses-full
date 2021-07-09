@@ -66,8 +66,8 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-<p align="center">[![Product Name Screen Shot][product-screenshot]](https://example.com)
-</p>
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
 
 
 The goal of this app is to provide a simple way for anyone to keep track of their expenses. You can add expenses and view an edit basic information about your current spending habits. 
